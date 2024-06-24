@@ -1,4 +1,4 @@
-import { CollectionSlugResult, ImageResult } from "./utils/graphql";
+import { CollectionSlugResult, ImageResult } from "./types/graphql";
 import { gql, GraphQLClient } from "graphql-request";
 
 const graphQLClient = new GraphQLClient("https://graphql.vogue.com/graphql", {
@@ -44,7 +44,7 @@ export async function fetchImages(collectionSlug: string): Promise<string[]> {
 		return images;
 	} catch (error) {
 		throw new Error(
-			`An error occurred when trying to fetch images: ${
+			`An error occurred when trying to fetch images for ${collectionSlug}: ${
 				error instanceof Error ? error.message : error
 			}`
 		);
