@@ -68,10 +68,9 @@ export async function fetchCollectionSlugs(brandSlug: string) {
 			}
 		`;
 		const result: CollectionSlugResult = await graphQLClient.request(query);
-		const collectionSlugs = result.brand.fashionShows.fashionShow.map(
+		const collectionSlugs = result?.brand?.fashionShows?.fashionShow?.map(
 			(entry) => entry.slug
 		);
-		console.log(collectionSlugs);
 		return collectionSlugs;
 	} catch (error) {
 		throw new Error(
